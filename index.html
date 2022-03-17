@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        html {
+            font-size: 110%;
+        }
+        .styled-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            font-family: sans-serif;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+        .styled-table thead tr {
+            background-color: #9404fb;
+            color: #ffffff;
+            text-align: left;
+        }
+
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+        }
+        .styled-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .styled-table tbody tr:last-of-type {
+            border-bottom: 2px solid #9404fb;
+        }
+
+</style>
+</head>
+<body>
+    <h1>Satellites with weight aggregate for past 30 days</h1>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Weight (total)</th>
+        </tr>
+        </thead>
+        {% for satellite in satellites %}
+            <tr>
+                <td><a style="text-decoration: none; display: flex;align-items: center; gap: 2ch" href="{{satellite.url}}"><img src="{{satellite.avatar}}" width="30" style="border-radius:50%;" /> {{ satellite.name }}</a></td>
+                <td>{{ satellite.weight }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    
+</body>
+</html>
