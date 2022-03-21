@@ -45,16 +45,21 @@
 </head>
 <body>
     <h1>Satellites with weight aggregate for past 30 days</h1>
+    <h2>Total Activities: {{ satellites.totalActivites }}</h2>
+    <h2>Total Weight: {{ satellites.totalWeight }}</h2>
+    <h2>Average Weight per activity: {{ satellites.averageWeight }}</h2>
     <table class="styled-table">
         <thead>
             <tr>
                 <th>User</th>
+                <th>Activity Count</th>
                 <th>Weight (total)</th>
         </tr>
         </thead>
-        {% for satellite in satellites %}
+        {% for satellite in satellites.members %}
             <tr>
                 <td><a style="text-decoration: none; display: flex;align-items: center; gap: 2ch" href="{{satellite.url}}"><img src="{{satellite.avatar}}" width="30" style="border-radius:50%;" /> {{ satellite.name }}</a></td>
+                <td>{{ satellite.count }}</td>
                 <td>{{ satellite.weight }}</td>
             </tr>
         {% endfor %}

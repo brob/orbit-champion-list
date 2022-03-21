@@ -71,11 +71,20 @@ module.exports = async () => {
         const total = collectWeights(activities)
         return {
             ...member,
-            weight: total
+            weight: total,
+            count: activities.length
         }
     })
     )
     const sorted = weights.sort((a, b) => b.weight - a.weight)
+    const totalActivites = weights.reduce((a, b) => a + b.count, 0)
+    const totalWeight = weights.reduce((a, b) => a + b.weight, 0)
+    const averageWeight = parseFloat(totalWeight / totalActivites).toFixed(2)
     console.log(sorted);
-    return sorted;
+    return {
+        members: sorted,
+        totalActivites,
+        totalWeight,
+        averageWeight
+    };
 }
